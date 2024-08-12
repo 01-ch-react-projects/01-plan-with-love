@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Card({id,image,info, price, name}) {
+    let [readmore, setReadMore]=useState(false);
+    //if readmore=true then show full length desc (info) if readmore=false show only limited desc
+    let desc= readmore ? info : `${info.substring(0,150)}...`;
+
+    let readmoreHandler=()=>{
+        setReadMore(!readmore);
+    }
+
   return (
     <>
             <div className="card" style={{width: "18rem"}}>
@@ -9,8 +17,8 @@ export default function Card({id,image,info, price, name}) {
                     <h6 className="card-title" style={{color:"green"}}>Rs. {price}</h6>
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text">
-                        {info}
-                        <span className='readmore'>show less</span>
+                        {desc}
+                        <span className='readmore' onClick={readmoreHandler}>{readmore ? 'show less': 'read more'}</span>
                     </p>
                     <a className="btn btn-outline-danger">Not Interested</a>
                 </div>
