@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Card({id,image,info, price, name}) {
+export default function Card({id,image,info, price, name, removeTour}) {
     let [readmore, setReadMore]=useState(false);
     //if readmore=true then show full length desc (info) if readmore=false show only limited desc
     let desc= readmore ? info : `${info.substring(0,150)}...`;
@@ -20,7 +20,7 @@ export default function Card({id,image,info, price, name}) {
                         {desc}
                         <span className='readmore' onClick={readmoreHandler}>{readmore ? 'show less': 'read more'}</span>
                     </p>
-                    <a className="btn btn-outline-danger">Not Interested</a>
+                    <a className="btn btn-outline-danger" onClick={()=>removeTour(id)}>Not Interested</a>
                 </div>
             </div>
     

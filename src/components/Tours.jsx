@@ -1,12 +1,12 @@
 import React from 'react'
 import Card from '../components/Card'
-export default function Tours({tours}) {
+export default function Tours({tours, removeTour}) {
   return (
     <>
         <div className='container'>
             <div className='cards'>
             {
-                tours.map(tour => <Card key={tour.id} {...tour}/> )
+                tours.map(tour => <Card key={tour.id} {...tour}  removeTour={removeTour}/> )
             }
             </div>
         </div>
